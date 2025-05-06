@@ -526,6 +526,8 @@ void print_shortest_path_tree(const Graph& graph, int source) {
 }
 
 int main() {
+
+    double start = omp_get_wtime();
     // Set number of threads
     omp_set_num_threads(omp_get_max_threads());
     cout << "Running with " << omp_get_max_threads() << " threads" << endl;
@@ -696,6 +698,7 @@ int main() {
             }
         }
     }
-
+    double end = omp_get_wtime();
+    std::cout << "Parallel region took " << (end - start) << " seconds\n";
     return 0;
 }
